@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "405497893868",
+    "firebase_url": "https://miocardiopediatra-medico.firebaseio.com",
+    "project_id": "miocardiopediatra-medico",
+    "storage_bucket": "miocardiopediatra-medico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405497893868:android:0368123fb00d7d9b42a6c9",
+        "android_client_info": {
+          "package_name": "com.example.miocardio"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405497893868-fisp8ot2t54b374a1edtrfu01d6n6mds.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ4LCac9rcSJ3ayEbj9jttnsJ51LUSqcI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405497893868-fisp8ot2t54b374a1edtrfu01d6n6mds.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

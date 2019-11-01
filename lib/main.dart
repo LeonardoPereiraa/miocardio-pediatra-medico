@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:miocardio/login/login_screen.dart';
+import 'package:miocardio/login/login.dart';
+import 'package:miocardio/login/signup.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
      
-      home: Login(),
+      home: SignupPage(),
     );
   }
 }

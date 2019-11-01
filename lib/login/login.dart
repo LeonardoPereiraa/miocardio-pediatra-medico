@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:miocardio/dashboard/home.dart';
-import 'package:miocardio/util/const.dart' as Constant;
+import 'package:miocardio/dashboard/dashboard.dart';
+import 'package:miocardio/util/const.dart';
 
-class Login extends StatefulWidget{
-	LoginState createState() => LoginState();
+class LoginPage extends StatefulWidget{
+	LoginPageState createState() => LoginPageState();
 
 }
-class LoginState extends State<Login>{
+class LoginPageState extends State<LoginPage>{
 
 	@override
 	Widget build(BuildContext context) {
 		return Scaffold(
-			backgroundColor: Constant.BG_COLOR,
+			backgroundColor: AppColors.BG,
 			body: Container(
 				padding: EdgeInsets.all(30),
 				child: Form(
@@ -64,7 +64,7 @@ class LoginState extends State<Login>{
 	Widget showSaveButton() {
 		return
 			FlatButton(
-				padding: EdgeInsets.only(top: 0.0),
+				padding: EdgeInsets.only(top: 3.0),
 				shape: Border.all(width: 0.5, color: Colors.red),
 				color: Color.fromRGBO(249, 124, 124, 1),
 				child: Text('Salvar',
@@ -76,6 +76,8 @@ class LoginState extends State<Login>{
 					Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
 				});
 	}
+
+
 /*
 	Widget showRoundedButton() {
 		return new Padding(
@@ -86,7 +88,7 @@ class LoginState extends State<Login>{
 						elevation: 5.0,
 						shape: new RoundedRectangleBorder(
 								borderRadius: new BorderRadius.circular(30.0)),
-						color: Colors.pinkAccent,
+						color: Colors.white12,
 						child: new Text(_isLoginForm ? 'Login' : 'Create account',
 								style: new TextStyle(fontSize: 20.0, color: Colors.white)),
 						onPressed: validateAndSubmit,
