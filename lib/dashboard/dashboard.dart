@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:miocardio/util/const.dart' as Constant;
+import 'package:miocardio/login/authentication.dart';
 
 class Dashboard extends StatefulWidget{
+  String userId;
+  final BaseAuth auth;
+  final VoidCallback logoutCallback;
+
+  Dashboard({this.userId,this.auth, this.logoutCallback});
+
   DashboardState createState() => DashboardState();
 
 }
