@@ -19,5 +19,20 @@ class User {
       password: password,
     );
   }
+
+  Future<void> signOut() async {
+    return Future.wait([
+      _firebaseAuth.signOut(),
+    ]);
+  }
+
+  Future<bool> isSignedIn() async {
+    final currentUser = await _firebaseAuth.currentUser();
+    return currentUser != null;
+  }
+
+  Future<String> getUser() async {
+    return (await _firebaseAuth.currentUser()).email;
+  }
 }
 
