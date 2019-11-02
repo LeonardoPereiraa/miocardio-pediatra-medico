@@ -11,4 +11,12 @@ class Medico {
   Medico(this.user, this.firstName, this.lastName, this.crm, this.birthDate,
       this.gender);
 
+  void getDataFromUser(User user) {
+    this.user = user;
+  }
+
+  Medico getMedicoWithUserData() {
+    return Medico(this.user, this.firstName, this.lastName, this.crm, this.birthDate, this.gender);
+  }
+
 }

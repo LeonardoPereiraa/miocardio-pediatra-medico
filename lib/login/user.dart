@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:miocardio/models/medico.dart';
 
 class User {
   final FirebaseAuth _firebaseAuth;
@@ -13,8 +14,11 @@ class User {
     );
   }
 
-  Future<void> signUp({String email, String password}) async {
-    return await _firebaseAuth.createUserWithEmailAndPassword(
+  Future<void> signUp(String email, String password, Medico medico) async {
+    medico = Medico(this, medico.firstName,
+        medico.lastName, medico.crm, medico.birthDate, medico.gender);
+
+    await _firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -34,5 +38,6 @@ class User {
   Future<String> getUser() async {
     return (await _firebaseAuth.currentUser()).email;
   }
+
 }
 
