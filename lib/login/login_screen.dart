@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:miocardio/dashboard/dashboard.dart';
 import 'package:miocardio/util/const.dart' as Constant;
 import 'package:miocardio/login/authentication.dart';
-
+import 'package:toast/toast.dart';
 
 class Login extends StatefulWidget{
 	final BaseAuth auth;
@@ -94,9 +94,8 @@ class LoginState extends State<Login>{
 							showLogo(),
 							showEmail(),
 							showPassword(),
-							showRoundedButton(),
-							showSecondaryButton(),
-							showErrorMessage()
+							showSaveButton(),
+							showSecondaryButton()
 						],
 					),
 				),
@@ -118,7 +117,7 @@ class LoginState extends State<Login>{
 							Icons.mail,
 							color: Colors.grey,
 						)),
-				validator: (value) => value.isEmpty ? 'Email can\'t be empty' : null,
+				validator: (value) => value.isEmpty ? 'Email deve ser preenchido' : null,
 				onSaved: (value) => _email = value.trim(),
 			);
 	}
@@ -135,25 +134,24 @@ class LoginState extends State<Login>{
 					),
 				),
 				obscureText: true,
-				validator: (value) => value.isEmpty ? 'Password can\'t be empty' : null,
+				validator: (value) => value.isEmpty ? 'Senha deve ser preenchida' : null,
 				onSaved: (value) => _password = value.trim(),
 			);
 	}
 
 	Widget showSaveButton() {
-		return
-			FlatButton(
+		return Padding(
+			padding: EdgeInsets.only(top: 40.0),
+			child: FlatButton(
 					padding: EdgeInsets.only(top: 0.0),
 					shape: Border.all(width: 0.5, color: Colors.red),
-					color: Color.fromRGBO(249, 124, 124, 1),
-					child: Text('Salvar',
-						style: TextStyle(
-							color: Colors.white,
-						),
+					color: Constant.BUTTON_COLOR,
+					child: Text(_isLoginForm ? 'Login' : 'Criar conta',
+						style: new TextStyle(fontSize: 20.0, color: Colors.white),
 					),
-					onPressed: (){
-						Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
-					});
+					onPressed: validateAndSubmit
+			)
+		);
 	}
 
 	Widget showRoundedButton() {
@@ -165,8 +163,8 @@ class LoginState extends State<Login>{
 						elevation: 5.0,
 						shape: new RoundedRectangleBorder(
 								borderRadius: new BorderRadius.circular(30.0)),
-						color: Colors.pinkAccent,
-						child: new Text(_isLoginForm ? 'Login' : 'Create account',
+						color: Constant.BUTTON_COLOR,
+						child: Text(_isLoginForm ? 'Login' : 'Criar conta',
 								style: new TextStyle(fontSize: 20.0, color: Colors.white)),
 						onPressed: validateAndSubmit,
 					),
@@ -176,7 +174,7 @@ class LoginState extends State<Login>{
 	Widget showSecondaryButton() {
 		return new FlatButton(
 				child: new Text(
-						_isLoginForm ? 'Não possui conta? Crie sua conta agora' : 'Possu',
+						_isLoginForm ? 'Não possui conta? Crie sua conta agora' : 'Possui uma conta? Faça login',
 						style: new TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
 				onPressed: toggleFormMode);
 	}
@@ -198,18 +196,13 @@ class LoginState extends State<Login>{
 		});
 	}
 
-	Widget showErrorMessage() {
+	void showErrorMessage() {
 		if (_errorMessage.length > 0 && _errorMessage != null) {
-			return new Text(
-				_errorMessage,
-				style: TextStyle(
-						fontSize: 13.0,
-						color: Colors.red,
-						height: 1.0,
-						fontWeight: FontWeight.w300),
-			);
+			Toast.show(_errorMessage,context,
+						gravity: Toast.TOP,
+						duration: Toast.LENGTH_SHORT);
 		} else {
-			return new Container(
+			Container(
 				height: 0.0,
 			);
 		}

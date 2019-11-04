@@ -20,8 +20,11 @@ class DashboardState extends State<Dashboard>{
     return Scaffold(
         backgroundColor: Constant.BG_COLOR,
         appBar: AppBar(
-          title: const Text('Teste de appbar'),
-          backgroundColor: Constant.BG_COLOR,
+          title: const Text('MiocardioPediatra'),
+          backgroundColor: Constant.BUTTON_COLOR,
+          leading: BackButton(),
+          centerTitle: true,
+
         ),
         body: Column(
           children: <Widget>[
